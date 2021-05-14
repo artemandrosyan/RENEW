@@ -70,14 +70,14 @@ jobs:
           unityVersion: ${{ matrix.unityVersion }}
           targetPlatform: ${{ matrix.targetPlatform }}
           customParameters: -profile SomeProfile -someBoolean -someValue exampleValue
-      - name: cd
-        run: |
-             cd ./test-project/android
-             
+      - name: Archive code coverage results
+        uses: actions/upload-artifact@v2
+        with:
+          name: EXPORT
+          path: ./test-project/android
       - uses: actions/setup-java@v1
         with: {java-version: 1.8}
-      - name: cd 
-        run: cd "opt/unity/Editor/Data/PlaybackEngines/AndroidPlayer/NDK" 
+      
       - name: Install NDK
         run:  echo "y" | sudo ${ANDROID_HOME}/tools/bin/sdkmanager --install "ndk;22.1.7171670" --sdk_root=${ANDROID_SDK_ROOT}
       - name: Output version code
