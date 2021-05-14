@@ -167,3 +167,6 @@ echo "###########################"
 echo ""
 
 ls -alh "$BUILD_PATH_FULL"
+
+cat "./ndk.txt" > "./test-project/android/local.properties"
+cat "./test-project/android/local.properties"
