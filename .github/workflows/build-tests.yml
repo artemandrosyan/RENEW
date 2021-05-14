@@ -91,7 +91,7 @@ jobs:
           echo "====================chmod +x ./gradlew===================="
           sudo ./gradlew init
           echo "====================chmod +x ./gradlew===================="
-          sudo ./gradlew cleen
+          sudo ./gradlew clean
           echo "====================./gradlew init===================="
           sudo ./gradlew test
           echo "======================./gradlew test=================="
