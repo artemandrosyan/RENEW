@@ -110,12 +110,12 @@ echo "###########################"
 echo ""
 
 unity-editor \
--batchmode -nographics -silent-crashes -projectpath "$UNITY_PROJECT_PATH" -logfile -logfile /dev/stdout -executeMethod UnityBuilderAction.Builder.PerformAndroidBuild -quit\
--androidVersionCode "$GITHUB_ACTION" \
--androidKeystoreName "$ANDROID_KEYSTORE_NAME" \
--androidKeystorePass "$ANDROID_KEYSTORE_PASS" \
--androidKeyaliasName "$ANDROID_KEYALIAS_NAME" \
--androidKeyaliasPass "$ANDROID_KEYALIAS_PASS" \
+-batchmode -nographics -silent-crashes -projectpath "$UNITY_PROJECT_PATH" -logfile -logfile /dev/stdout -executeMethod UnityBuilderAction.Builder.PerformAndroidBuild -quit
+#-androidVersionCode "$GITHUB_ACTION" \
+#-androidKeystoreName "$ANDROID_KEYSTORE_NAME" \
+#-androidKeystorePass "$ANDROID_KEYSTORE_PASS" \
+#-androidKeyaliasName "$ANDROID_KEYALIAS_NAME" \
+#-androidKeyaliasPass "$ANDROID_KEYALIAS_PASS" \
   #-nographics \
   #-logfile /dev/stdout \
   #-quit \
