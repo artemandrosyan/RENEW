@@ -1,3 +1,3 @@
-ls -aR "./test-project/android"
+ls -aR "./"
 echo "========================1" 
 
