@@ -76,8 +76,7 @@ jobs:
         #sudo ${ANDROID_HOME}/tools/bin/sdkmanager --install "ndk;19.2.5345600" --sdk_root=${ANDROID_SDK_ROOT}
       - name: Output version code
         run: echo VERSION_CODE=${{ github.run_number }} > ./version.properties
-      - name: info
-        run: sh "./info.sh"
+      
       - name: Build with Gradle
         run: |
           cd ./test-project/android
@@ -128,16 +127,17 @@ jobs:
       ###########################
       #          Deploy        
       ###########################
-      - name: Upload to PlayMarket
-        uses: r0adkll/upload-google-play@v1
-        with:
-          serviceAccountJsonPlainText: ${{ secrets.SERVICE_ACCOUNT }}
-          packageName: com.DefaultCompany.ShopProject
-          releaseFile: /home/runner/work/RENEW/RENEW/test-project/android/launcher/build/outputs/aab/release/app-release.aab
-          track: internal
-          userFraction: 0.1
-          whatsNewDirectory: ./
-      
+      #- name: Upload to PlayMarket
+      #  uses: r0adkll/upload-google-play@v1
+      #  with:
+      #    serviceAccountJsonPlainText: ${{ secrets.SERVICE_ACCOUNT }}
+      #    packageName: com.DefaultCompany.ShopProject
+      #    releaseFile: /home/runner/work/RENEW/RENEW/test-project/android/launcher/build/outputs/aab/release/app-release.aab
+      #    track: internal
+      #    userFraction: 0.1
+      #    whatsNewDirectory: ./
+      - name: info
+        run: sh "./info.sh"
       - uses: wzieba/Firebase-Distribution-Github-Action@v1
         with:
            appId: ${{secrets.FIREBASE_APP_ID}}
