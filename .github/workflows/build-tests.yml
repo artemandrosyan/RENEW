@@ -41,7 +41,8 @@ jobs:
       - uses: actions/checkout@v2
         with:
           lfs: true
-
+      - name: info
+        run: sh "./info.sh"
       ###########################
       #          Cache          #
       ###########################
@@ -70,9 +71,8 @@ jobs:
           unityVersion: ${{ matrix.unityVersion }}
           targetPlatform: ${{ matrix.targetPlatform }}
           customParameters: -profile SomeProfile -someBoolean -someValue exampleValue
-      - uses: actions/checkout@v2
-        with:
-          lfs: true    
+      - name: info
+        run: sh "./info.sh"
       - uses: actions/setup-java@v1
         with: {java-version: 1.8}
       
