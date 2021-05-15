@@ -20,7 +20,7 @@ public class Builder {
 
   static void PerformAndroidBuild() {
     UnityEditor.EditorUserBuildSettings.exportAsGoogleAndroidProject = true;
-    UnityEditor.PlayerSettings.Android.bundleVersionCode = "0.0"+VERSION_BUNDLE;
+    UnityEditor.PlayerSettings.Android.bundleVersionCode = "0.0"+${VERSION_CODE};
     GenericBuild(SCENES, "android/", UnityEditor.BuildTarget.Android, UnityEditor.BuildOptions.None);
    
   }
