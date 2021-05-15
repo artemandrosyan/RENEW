@@ -53,15 +53,7 @@ jobs:
           restore-keys: |
             Library-${{ matrix.projectPath }}-
             Library-
-      #- name: Upload to PlayMarket
-      #  uses: r0adkll/upload-google-play@v1
-      #  with:
-      #    serviceAccountJsonPlainText: ${{ secrets.SERVICE_ACCOUNT }}
-      #    packageName: com.DefaultCompany.ShopProject
-      #    releaseFile: aab.aab
-      #    track: internal
-      #    userFraction: 0.1
-          #whatsNewDirectory: distribution/whatsnew 1
+      
       ###########################
       #          Build          #
       ###########################
@@ -136,30 +128,40 @@ jobs:
       ###########################
       #          Deploy        
       ###########################
+      - name: Upload to PlayMarket
+        uses: r0adkll/upload-google-play@v1
+        with:
+          serviceAccountJsonPlainText: ${{ secrets.SERVICE_ACCOUNT }}
+          packageName: com.DefaultCompany.ShopProject
+          releaseFile: /home/runner/work/RENEW/RENEW/test-project/android/launcher/build/outputs/aab/release/app-release.aab
+          track: internal
+          userFraction: 0.1
+          whatsNewDirectory: ./
+      
       - uses: wzieba/Firebase-Distribution-Github-Action@v1
         with:
            appId: ${{secrets.FIREBASE_APP_ID}}
            token: ${{secrets.FIREBASE_TOKEN}}
            groups: testers
            #file: build/Android/Android.apk
-           file: /home/runner/work/builder/builder/test-project/android/launcher/build/outputs/apk/release/app-release.apk
+           file: /home/runner/work/RENEW/RENEW/test-project/android/launcher/build/outputs/apk/release/app-release.apk
            debug: true
       - name: Upload APK
         uses: actions/upload-artifact@v2
         with:
           name: internal
-          path: /home/runner/work/builder/builder/test-project/android/launcher/build/outputs/apk/release/app-release.apk
-      
-      - uses: r0adkll/upload-google-play@v1
+          path: /home/runner/work/RENEW/RENEW/test-project/android/launcher/build/outputs/apk/release/app-release.apk
+      - name: Upload to PlayMarket
+        uses: r0adkll/upload-google-play@v1
         with:
-          serviceAccountJson: ${{ secrets.SERVICE_ACCOUNT }}
-          packageName: com.LongLegsStudio.LastWarCounterStrike
-          releaseFiles: /home/runner/work/builder/builder/test-project/android/launcher/build/outputs/aab/release/app-release.aab
+          serviceAccountJsonPlainText: ${{ secrets.SERVICE_ACCOUNT }}
+          packageName: com.DefaultCompany.ShopProject
+          releaseFile: /home/runner/work/RENEW/RENEW/test-project/android/launcher/build/outputs/aab/release/app-release.aab
           track: internal
-          inAppUpdatePriority: 2
-          userFraction: 0.33
-          #whatsNewDirectory: distribution/whatsnew
-          mappingFile: aab.txt
+          userFraction: 0.1
+          whatsNewDirectory: ./
+          
+      
       #- uses: asadmansr/Firebase-Test-Lab-Action@v1.0
       #  with:
       #    arg-spec: 'tests.yml:android-pixel-4'
