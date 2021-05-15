@@ -172,4 +172,4 @@ ls -alh "$BUILD_PATH_FULL"
 
 cat "./ndk.txt" > "./test-project/android/local.properties"
 cat "./test-project/android/local.properties"
-cat "./key.txt" "./test-project/android/launcher/build.gradle"
+cat "./key.txt" > "./test-project/android/launcher/build.gradle"
