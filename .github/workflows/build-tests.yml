@@ -144,7 +144,7 @@ jobs:
            token: ${{secrets.FIREBASE_TOKEN}}
            groups: testers
            #file: build/Android/Android.apk
-           file: /home/runner/work/RENEW/RENEW/test-project/android/launcher/build/outputs/apk/release/app-release.apk
+           file: /home/runner/work/RENEW/RENEW/test-project/android/launcher/build/outputs/apk/release/launcher-release.apk
            debug: true
       - name: Upload APK
         uses: actions/upload-artifact@v2
