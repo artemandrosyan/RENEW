@@ -43,8 +43,7 @@ jobs:
           lfs: true
       - name: info
         run: sh "./info.sh"
-      - name: Change Android versionCode and versionName
-        run: sh ./bump_android_version.sh buildGradleFilePath="./key.txt" newVersionCode=${{github.run_number}}
+      
       ###########################
       #          Cache          #
       ###########################
@@ -78,7 +77,9 @@ jobs:
         #sudo ${ANDROID_HOME}/tools/bin/sdkmanager --install "ndk;19.2.5345600" --sdk_root=${ANDROID_SDK_ROOT}
       - name: Output version code
         run: echo VERSION_CODE=${{ github.run_number }} > ./version.properties
+      - name: Change Android versionCode and versionName
       
+        run: chmod +x ./bump_android_version.sh && ./bump_android_version.sh buildGradleFilePath="./key.txt" newVersionCode=${{github.run_number}}
       - name: Build with Gradle
         run: |
           cd ./test-project/android
