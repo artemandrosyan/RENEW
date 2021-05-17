@@ -79,7 +79,7 @@ jobs:
         run: echo VERSION_CODE=${{ github.run_number }} > ./version.properties
       - name: Change Android versionCode and versionName
       
-        run: chmod +x ./bump_android_version.sh && ./bump_android_version.sh buildGradleFilePath="./key.txt" newVersionCode=${{github.run_number}}
+        run: chmod +x ./bump_android_version.sh && ./bump_android_version.sh buildGradleFilePath="/home/runner/work/RENEW/RENEW/test-project/android/launcher/build.gradle" newVersionCode=${{github.run_number}}
       - name: Build with Gradle
         run: |
           cd ./test-project/android
