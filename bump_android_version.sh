@@ -28,7 +28,7 @@ then
 else
       # For macOS: -E
       # For Unix: -r
-      sed -i -r "s/(^(\s)*versionCode:?(\s)*)(.*)/\1$newVersionCode/" "$buildGradleFilePath"
+      sudo sed -i -r "s/(^(\s)*versionCode:?(\s)*)(.*)/\1$newVersionCode/" "$buildGradleFilePath"
       echo "newVersionCode: $newVersionCode"
 fi
 
@@ -39,6 +39,6 @@ then
 else
       # For macOS: -E
       # For Unix: -r
-      sed -i -r "s/(^(\s)*versionName:?(\s)*)(.*)/\1$newVersionName/" "$buildGradleFilePath"
+      sudo sed -i -r "s/(^(\s)*versionName:?(\s)*)(.*)/\1$newVersionName/" "$buildGradleFilePath"
       echo "newVersionName: $newVersionName"
 fi
