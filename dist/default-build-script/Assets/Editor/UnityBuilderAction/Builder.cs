@@ -28,10 +28,7 @@ public class Builder {
 
 
   static void PerformAndroidBuild() {
-   
     UnityEditor.EditorUserBuildSettings.exportAsGoogleAndroidProject = true;
-  
-    
     GenericBuild(SCENES, "android/", UnityEditor.BuildTarget.Android, UnityEditor.BuildOptions.None);
    
   }
