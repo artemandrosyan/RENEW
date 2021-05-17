@@ -6,6 +6,15 @@ using System.Collections.Generic;
 //using UnityEditor.Build.Reporting;
 using UnityEngine;
 
+using System.Linq;
+using System.Reflection;
+using UnityBuilderAction.Input;
+using UnityBuilderAction.Reporting;
+using UnityBuilderAction.Versioning;
+using UnityEditor;
+using UnityEditor.Build.Reporting;
+
+
 namespace UnityBuilderAction{
 public class Builder {
   static string[] SCENES = FindEnabledEditorScenes();
@@ -19,7 +28,20 @@ public class Builder {
 
 
   static void PerformAndroidBuild() {
+    // Gather values from args
+    var options = ArgumentsParser.GetValidatedOptions();
     UnityEditor.EditorUserBuildSettings.exportAsGoogleAndroidProject = true;
+       // Get all buildOptions from options
+      BuildOptions buildOptions = BuildOptions.None;
+      foreach (string buildOptionString in Enum.GetNames(typeof(BuildOptions))) {
+        if (options.ContainsKey(buildOptionString)) {
+          BuildOptions buildOptionEnum = (BuildOptions) Enum.Parse(typeof(BuildOptions), buildOptionString);
+          buildOptions |= buildOptionEnum;
+        }
+      }
+     // Set version for this build
+      VersionApplicator.SetVersion(options["buildVersion"]);
+      VersionApplicator.SetAndroidVersionCode(options["androidVersionCode"]);
     
     GenericBuild(SCENES, "android/", UnityEditor.BuildTarget.Android, UnityEditor.BuildOptions.None);
    
